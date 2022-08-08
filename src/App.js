@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Image from "./Image.jpg";
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    person: {
+      fullName: "Will Smith",
+      bio: " American actor, rapper, producer, and YouTuber.",
+      imgSrc: Image,
+      profession: "Actor",
+    },
+    show: true,
+  };
+  handleSowPerson = () => {
+    this.setState({
+      ...this.state,
+      show: !this.state.show,
+    });
+  };
+
+  render() {
+    return (
+      <div className="">
+        {this.state.show && (
+          <>
+            <h1 className="fullName">{this.state.person.fullName}</h1>
+            <h1 className="bio">{this.state.person.bio}</h1>
+            <img src={this.state.person.imgSrc} alt="Smith"></img>
+            <h1 className="profession">{this.state.person.profession}</h1>
+            <br></br>
+          </>
+        )}
+        <div className="btn">
+        <button onClick={this.handleSowPerson}>click here</button>
+        </div>
+        
+      </div>
+    );
+  }
 }
-
 export default App;
